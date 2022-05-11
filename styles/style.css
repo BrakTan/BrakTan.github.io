@@ -1,6 +1,6 @@
 .bloc_page{
     /*border: 1px black solid;*/
-    width: 1497px;
+    width: 1370px;
     margin: auto;
 }
 
@@ -45,12 +45,12 @@ h1{
 }*/
 
 #zone_gauche{
-    left: 67px;
+    left: 30px;
  
 }
 
 #zone_droite{
-    right: 50px;
+    right: 10px;
 
 }
 
