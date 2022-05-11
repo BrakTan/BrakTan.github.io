@@ -1,31 +1,70 @@
 .bloc_page{
-    border: 1px black solid;
+    /*border: 1px black solid;*/
     width: 90%;
     margin: auto;
 }
 
 .titre_appli{
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+h1{
+    border: 2px solid #e3e3e3;
+    background: #ebebeb;
+    box-shadow: 3px 5px 5px;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 .balance{
     height: 100%;
-    border: solid blue 1px;
+    /*border: solid blue 1px;*/
     background: url('../images/balanceStable.png') no-repeat center;
     flex: 4;
+    position: relative;
+}
+
+.zone{
+    width: 260px;
+    height: 300px;
+    /*border: 1px solid green;*/
+    position: absolute;
+    top: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    align-items: flex-start;
+    overflow: scroll;
+    border-radius: 10px;
+}
+
+/*.zone:-moz-drag-over{
+    border: 2px lime dotted;
+}*/
+
+#zone_gauche{
+    left: 67px;
+ 
+}
+
+#zone_droite{
+    right: 50px;
+
 }
 
 .appli{
     width: 100%;
     height: 600px;
-    border: solid red 1px;
+    /*border: solid red 1px;*/
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .tiroir_poid{
-    border: yellow 3px solid;
+    /*border: yellow 3px solid;*/
     height: 100%;
     flex: 1;
     display: flex;
@@ -34,13 +73,37 @@
     
 }
 
+.poid_gauche{
+    border-right: 2px grey groove;
+}
+
 .poid_droit{
     justify-content: flex-end;
 }
 
 .poid{
-    border: 1px orange solid;
-    width: 40%;
-    height: 90px;
-    background: url(../images/poid1G.png) no-repeat center;
+    /*border: 1px orange solid;*/
+    width: 84px;
+    height: 81px;
+    margin: 0px 2px 0px 2px;
+    /*background: url(../images/poid1G.png) no-repeat center;*/
 }
+
+.bas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 3px grey dashed;
+    margin-top: 10px;
+}
+
+.bas p{
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px;
+}
+
+/*body{
+    border: dotted red 1px;
+}*/

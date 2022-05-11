@@ -8,36 +8,196 @@
     </head>
     <body>
         <div class="bloc_page">
-            <h1 class="titre_appli">Balance Interactive</h1>
-            <div class="appli">
-                <div class="tiroir_poid poid_gauche">
-                    <div class=" poid poid_1g"></div>
-                    <div class="poid poid_2g"></div>
-                    <div class="poid poid 5g"></div>
-                    <div class=" poid poid_10g"></div>
-                    <div class="poid poid_20g"></div>
-                    <div class="poid poid 50g"></div>
-                    <div class=" poid poid_100g"></div>
-                    <div class="poid poid_200g"></div>
-                    <div class="poid poid 500g"></div>
-                </div>
-                <div class="balance">
-                <!-- <img src=images/balanceStable.png alt="La balance est stable"> -->
-                </div>
-                <div class="tiroir_poid poid_droit">
-                    <div class=" poid poid_1g"></div>
-                    <div class="poid poid_2g"></div>
-                    <div class="poid poid 5g"></div>
-                    <div class=" poid poid_10g"></div>
-                    <div class="poid poid_20g"></div>
-                    <div class="poid poid 50g"></div>
-                    <div class=" poid poid_100g"></div>
-                    <div class="poid poid_200g"></div>
-                    <div class="poid poid 500g"></div>
-                </div>
+
+            <div class="titre_appli">
+                <h1>Balance Interactive</h1>
             </div>
             
 
+            <div class="appli">
+                <div class="tiroir_poid poid_gauche">
+                    <img class='poid' id="image1g" src="./images/poid1G.png" alt="poid de 1g" draggable="true" value="1">
+                    <img class='poid' id="image2g" src="./images/poid2G.png" alt="poid de 2g" draggable="true">
+                    <img class='poid' id="image5g" src="./images/poid5G.png" alt="poid de 5g" draggable="true">
+                    <img class='poid' id="image10g" src="./images/poid10G.png" alt="poid de 10g" draggable="true">
+                    <img class='poid' id="image20g" src="./images/poid20G.png" alt="poid de 20g" draggable="true">
+                    <img class='poid' id="image50g" src="./images/poid50G.png" alt="poid de 50g" draggable="true">
+                    <img class='poid' id="image100g" src="./images/poid100G.png" alt="poid de 100g" draggable="true">
+                    <img class='poid' id="image200g" src="./images/poid200G.png" alt="poid de 200g" draggable="true">
+                    <img class='poid' id="image500g" src="./images/poid500G.png" alt="poid de 500g" draggable="true">
+                </div>
+
+                <div class="balance" id="balance">
+                <div id="zone_gauche" class="zone"></div>
+                <div id="zone_droite" class="zone"></div>
+                </div>
+
+                <div class="tiroir_poid poid_droit">
+                    <!--<div class="poid poid_1g"></div>
+                    <div class="poid poid_2g"></div>
+                    <div class="poid poid 5g"></div>
+                    <div class="poid poid_10g"></div>
+                    <div class="poid poid_20g"></div>
+                    <div class="poid poid 50g"></div>
+                    <div class="poid poid_100g"></div>
+                    <div class="poid poid_200g"></div>
+                    <div class="poid poid 500g"></div>-->
+                </div>
+            </div>
+
+            <div class="bas">
+                <!--<input id="bouton1" type="button" value="Penche à gauche">
+                <input id="bouton2" type="button" value="Penche a droite">
+                <input id="bouton3" type="button" value="Stable">
+                <p id="info"></p>-->
+                <p id="valeurGauche">Poid à gauche = 0</p>
+                <p id="valeurDroite">Poid à droite = 0</p>
+                <!--<input type="button" id="Ajoute" value="Supprime ?">-->
+            </div>
+            
+
+            <script src="./scripts/main.js"></script>
+            <script>
+                var poidADroite = 0;
+                var poidAGauche = 0;
+
+                /*document.getElementById("Ajoute").addEventListener('click', function(){
+                    const box = document.getElementById('zone_gauche');
+                    box.removeChild(box.lastChild);
+                })*/
+
+                document.getElementById('image1g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image2g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image5g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image10g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image20g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image50g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image100g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image200g').addEventListener('dragstart', fonction_dragstart, false);
+                document.getElementById('image500g').addEventListener('dragstart', fonction_dragstart, false);
+                function fonction_dragstart(ev){
+                    //document.getElementById('info').innerHTML = "déplacment de " + ev.target.getAttribute("src");
+                    this.style.opacity=0.2;
+                    this.style.border = "dashed blue";
+                    ev.dataTransfer.setData("Text", ev.target.class);
+                    ev.dataTransfer.setData("Image", ev.target.getAttribute("src"));
+                };
+                document.getElementById('image1g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image2g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image5g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image10g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image20g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image50g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image100g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image200g').addEventListener('dragend', fonction_dragend, false);
+                document.getElementById('image500g').addEventListener('dragend', fonction_dragend, false);
+                function fonction_dragend(ev){
+                    ev.preventDefault();
+                    //document.getElementById('info').innerHTML = "Fin du déplacement de " + ev.target.id;
+                    //document.getElementById('info').innerHTML = "poid a gauche: "+poidAGauche+"\npoid a droite : "+poidADroite;
+                    document.getElementById('valeurGauche').innerHTML = 'Poid à gauche = '+poidAGauche;
+                    document.getElementById('valeurDroite').innerHTML = 'Poid à droite = '+poidADroite
+                    this.style.opacity = 1;
+                    this.style.border = 'none';
+                }
+
+                document.getElementById('zone_gauche').addEventListener('dragover', fonction_dragover, false);
+                document.getElementById('zone_droite').addEventListener('dragover', fonction_dragover, false);
+                function fonction_dragover(ev){
+                    ev.preventDefault();
+                    this.style.background = "rgba(207, 206, 204, 0.5)";
+                    
+                }
+                document.getElementById('zone_gauche').addEventListener('drop', fonction_drop, false);
+                document.getElementById('zone_droite').addEventListener('drop', fonction_drop, false);
+
+                function fonction_drop(ev){
+                    ev.preventDefault();
+                    var data = ev.dataTransfer.getData("Text");
+                    var image = ev.dataTransfer.getData("Image")
+                    var elmt = document.createElement("img");
+                    ev.target.appendChild(elmt);
+                    elmt.setAttribute("src", image);
+                    elmt.classList.add(data);
+                    this.style.background = 'none';
+                    if(ev.target.id == 'zone_gauche'){
+                        switch(elmt.getAttribute('src')){
+                        case './images/poid1G.png':
+                            poidAGauche+= 1;
+                            break;
+                        case './images/poid2G.png':
+                            poidAGauche +=2;
+                            break;
+                        case './images/poid5G.png':
+                            poidAGauche += 5;
+                            break;
+                        case './images/poid10G.png':
+                            poidAGauche += 10;
+                            break;
+
+                        case './images/poid20G.png':
+                            poidAGauche +=20;
+                            break;
+                        case './images/poid50G.png':
+                            poidAGauche +=50;
+                            break;
+                        case './images/poid100G.png':
+                            poidAGauche += 100;
+                            break;
+                        case './images/poid200G.png':
+                            poidAGauche += 200;
+                            break;
+                        case './images/poid500G.png':
+                            poidAGauche += 500;
+                            break;
+                        }
+                    }
+                    else if(ev.target.id == 'zone_droite'){
+                        switch(elmt.getAttribute('src')){
+                        case './images/poid1G.png':
+                            poidADroite+= 1;
+                            break;
+                        case './images/poid2G.png':
+                            poidADroite +=2;
+                            break;
+                        case './images/poid5G.png':
+                            poidADroite += 5;
+                            break;
+                        case './images/poid10G.png':
+                            poidADroite += 10;
+                            break;
+
+                        case './images/poid20G.png':
+                            poidADroite +=20;
+                            break;
+                        case './images/poid50G.png':
+                            poidADroite +=50;
+                            break;
+                        case './images/poid100G.png':
+                            poidADroite += 100;
+                            break;
+                        case './images/poid200G.png':
+                            poidADroite += 200;
+                            break;
+                        case './images/poid500G.png':
+                            poidADroite += 500;
+                            break;
+                        }
+                    }
+                    
+                    if(poidAGauche > poidADroite){
+                        pencheGauche();
+                    }
+                    else if(poidAGauche<poidADroite){
+                        pencheDroite();
+                    }
+                    else{
+                        stabilise();
+                    }
+                }
+    
+            </script>
         </div>
+
     </body>
 </html>
