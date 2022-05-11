@@ -99,6 +99,8 @@
                     document.getElementById('valeurDroite').innerHTML = 'Poid à droite = '+poidADroite
                     this.style.opacity = 1;
                     this.style.border = 'none';
+                    document.getElementById('zone_gauche').style.background = 'none';
+                    document.getElementById('zone_droite').style.background = 'none';
                 }
 
                 document.getElementById('zone_gauche').addEventListener('dragover', fonction_dragover, false);
